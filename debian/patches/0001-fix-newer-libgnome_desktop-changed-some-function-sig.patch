@@ -1,0 +1,34 @@
+From 02a63bd9600c1f9f7ca67db92d4b1bfcc74d532e Mon Sep 17 00:00:00 2001
+From: sisungo <sisungo@icloud.com>
+Date: Sat, 20 Sep 2025 18:50:05 +0800
+Subject: [PATCH] fix: newer libgnome_desktop changed some function signatures
+
+---
+ src/icon-helpers.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/icon-helpers.c b/src/icon-helpers.c
+index bdeb0fa..07297c6 100644
+--- a/src/icon-helpers.c
++++ b/src/icon-helpers.c
+@@ -220,7 +220,7 @@ thumbnail_media_async_thread (GTask    *task,
+ 		return;
+ 	}
+ 
+-	tmp_pixbuf = gnome_desktop_thumbnail_factory_generate_thumbnail (factory, uri, "video/x-totem-stream");
++	tmp_pixbuf = gnome_desktop_thumbnail_factory_generate_thumbnail (factory, uri, "video/x-totem-stream", NULL, NULL);
+ 
+ 	if (!tmp_pixbuf) {
+ 		g_task_return_new_error (task, G_IO_ERROR, G_IO_ERROR_FAILED, "Thumbnailing failed");
+@@ -228,7 +228,7 @@ thumbnail_media_async_thread (GTask    *task,
+ 		return;
+ 	}
+ 
+-	gnome_desktop_thumbnail_factory_save_thumbnail (factory, tmp_pixbuf, uri, unix_date);
++	gnome_desktop_thumbnail_factory_save_thumbnail (factory, tmp_pixbuf, uri, unix_date, NULL, NULL);
+ 
+ 	/* Save the thumbnail URL for the bookmarks source */
+ 	save_bookmark_thumbnail (media, uri);
+-- 
+2.50.1
+
