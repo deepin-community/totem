@@ -1,2 +1,4 @@
 debian/Don-t-run-pylint-at-build-time.patch
 Annotation_test-totem.patch
+0001-fix-meson-no-longer-takes-positional-arguments-for-i.patch
+0001-fix-newer-libgnome_desktop-changed-some-function-sig.patch

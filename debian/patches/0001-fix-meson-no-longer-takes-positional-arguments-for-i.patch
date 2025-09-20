@@ -1,0 +1,38 @@
+From d4993d82b21b92201c3e6f91bee9ddb6ec5d8386 Mon Sep 17 00:00:00 2001
+From: sisungo <sisungo@icloud.com>
+Date: Sat, 20 Sep 2025 18:44:00 +0800
+Subject: [PATCH] fix: meson no longer takes positional arguments for
+ i18n.merge_file
+
+---
+ data/appdata/meson.build | 1 -
+ data/meson.build         | 1 -
+ 2 files changed, 2 deletions(-)
+
+diff --git a/data/appdata/meson.build b/data/appdata/meson.build
+index c4d17e9..c2e6463 100644
+--- a/data/appdata/meson.build
++++ b/data/appdata/meson.build
+@@ -1,7 +1,6 @@
+ appdata = 'org.gnome.Totem.appdata.xml'
+ 
+ appdata_file = i18n.merge_file (
+-    'appdata',
+     input: appdata + '.in',
+     output: appdata,
+     install: true,
+diff --git a/data/meson.build b/data/meson.build
+index 4c6df3b..a1d0060 100644
+--- a/data/meson.build
++++ b/data/meson.build
+@@ -69,7 +69,6 @@ desktop_in = configure_file(
+ )
+ 
+ desktop_file = i18n.merge_file (
+-    desktop,
+     type: 'desktop',
+     input: desktop_in,
+     output: desktop,
+-- 
+2.50.1
+
